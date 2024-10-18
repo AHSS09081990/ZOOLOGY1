@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ ON TESTIS </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .question-container {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .question {
+            font-weight: bold;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options li {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .options li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .correct {
+            background-color: #c8e6c9; /* Green background for correct answer */
+        }
+
+        .incorrect {
+            background-color: #ffcdd2; /* Red background for incorrect answer */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MCQs on Reproduction and Lactation</h1>
+
+        <div id="quiz"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the primary function of the testis?",
+                options: ["Production of estrogen", "Synthesis of testosterone", "Storage of sperm", "Regulation of body temperature"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which structure within the testis is responsible for sperm production?",
+                options: ["Sertoli cells", "Leydig cells", "Seminiferous tubules", "Epididymis"],
+                correctAnswer: 2
+            },
+            {
+                question: "The testis is located in which part of the male reproductive system?",
+                options: ["Abdominal cavity", "Pelvic cavity", "Scrotum", "Urethra"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which hormone is primarily produced by Leydig cells in the testis?",
+                options: ["Luteinizing hormone", "Follicle-stimulating hormone", "Testosterone", "Progesterone"],
+                correctAnswer: 2
+            },
+            {
+                question: "During which stage of life does the testis typically descend into the scrotum?",
+                options: ["Prenatal", "Infancy", "Adolescence", "Adulthood"],
+                correctAnswer: 0
+            },
+            {
+                question: "What is the average temperature required for optimal sperm production in the testis?",
+                options: ["37°C", "34°C", "30°C", "33°C"],
+                correctAnswer: 1
+            },
+            {
+                question: "The blood-testis barrier is formed by which type of cell?",
+                options: ["Leydig cells", "Sertoli cells", "Germ cells", "Myoid cells"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of the following conditions can lead to testicular torsion?",
+                options: ["Excessive exercise", "Trauma to the area", "Inadequate blood flow", "All of the above"],
+                correctAnswer: 3
+            },
+            {
+                question: "The process of sperm maturation occurs primarily in which part of the male reproductive system?",
+                options: ["Testis", "Epididymis", "Vas deferens", "Seminal vesicle"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of the following is NOT a function of the testis?",
+                options: ["Hormone production", "Sperm storage", "Regulation of menstrual cycle", "Sperm production"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the primary function of the ovary?",
+                options: ["Production of testosterone", "Sperm storage", "Synthesis of oestrogen and progesterone", "Regulation of body temperature"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which of the following hormones is produced by the follicle cells of the ovary?",
+                options: [," Testosterone and cortisol", "Sperm storage","Estrogen and progesterone" , "Regulation of body temperature"],
+                correctAnswer: 3
+            },
+            {
+                question: "What is the name of the process by which an egg is released from the ovary?",
+                options: [,"  Ovulation", "Menstruation","Follicular development" , " Luteinization"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of the following structures surrounds the ovary and attaches it to the pelvic wall?",
+                options: [," Broad ligament", "Suspensory ligament","Ovarian ligament" , " cervix"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which of the following structures connects the ovary to the uterus?",
+                options: [," Broad ligament", "Suspensory ligament","Ovarian ligament" , " cervix"],
+                correctAnswer: 3
+            }
+           
+        ];
+       
+
+        function loadQuestions() {
+            const quizContainer = document.getElementById("quiz");
+            questions.forEach((question, index) => {
+                const questionContainer = document.createElement("div");
+                questionContainer.classList.add("question-container");
+
+                const questionElement = document.createElement("p");
+                questionElement.classList.add("question");
+                questionElement.innerText = `${index + 1}. ${question.question}`;
+                questionContainer.appendChild(questionElement);
+
+                const optionsList = document.createElement("ul");
+                optionsList.classList.add("options");
+
+                question.options.forEach((option, i) => {
+                    const optionItem = document.createElement("li");
+                    optionItem.innerText = option;
+                    optionItem.addEventListener("click", function () {
+                        handleAnswerClick(optionItem, i, question.correctAnswer);
+                    });
+                    optionsList.appendChild(optionItem);
+                });
+
+                questionContainer.appendChild(optionsList);
+                quizContainer.appendChild(questionContainer);
+            });
+        }
+
+        function handleAnswerClick(optionElement, selectedAnswer, correctAnswer) {
+            const parent = optionElement.parentElement;
+            Array.from(parent.children).forEach(child => child.style.pointerEvents = "none");
+
+            if (selectedAnswer === correctAnswer) {
+                optionElement.classList.add("correct");
+            } else {
+                optionElement.classList.add("incorrect");
+            }
+        }
+
+        window.onload = loadQuestions;
+    </script>
+</body>
+</html>
